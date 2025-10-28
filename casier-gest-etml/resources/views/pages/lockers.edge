@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des casiers de l'ETML</title>
+  </head>
+  <body>
+    <h1>Liste des casiers</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Numéro du casier</th>
+            <th>Nom de la salle</th>
+            <th>Nom du site</th>
+            <th>ID du propriétaire</th>
+        </tr>
+        @each(locker in lockers)
+        <tr>
+            <td>{{ locker.lockerId}}</td>
+            <td>{{ locker.lockerNumber}}</td>
+            <td>{{ locker.roomName}}</td>
+            <td>{{ locker.site}}</td>
+            <td>{{ locker.studentId}}</td>
+        </tr>
+        @end
+    </table>
+
+  </body>
+</html>
