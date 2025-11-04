@@ -1,5 +1,4 @@
 import Locker from '#models/locker'
-import Student from '#models/student'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {

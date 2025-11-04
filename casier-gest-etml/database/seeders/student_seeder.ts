@@ -20,14 +20,19 @@ export default class extends BaseSeeder {
           class: 'MID2B'
         },
         {
-          name: 'Salah',
-          lastName: 'Mohamed',
+          name: 'Mohammed',
+          lastName: 'Salah',
           class: 'FID2A'
         },
         {
           name: 'Cristiano',
           lastName: 'Ronaldo',
           class: 'CIN1A'
+        },
+        {
+          name: 'Zidane',
+          lastName: 'Sahraoui',
+          class: 'CIN2B'
         },
       ]
   

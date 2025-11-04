@@ -17,8 +17,6 @@ export default class Locker extends BaseModel {
   @column()
   declare studentId: number
 
-
-
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
