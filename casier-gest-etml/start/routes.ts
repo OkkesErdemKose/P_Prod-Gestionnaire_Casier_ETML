@@ -12,8 +12,6 @@ import StudentsController from '#controllers/students_controller'
 import router from '@adonisjs/core/services/router'
 
 router.get('casiers', [LockersController, 'index'])
-router.get("casiers/:id", [LockersController, 'show'])
-
-
+router.get("casiers/:locker_id", [LockersController, 'show'])
 
 router.get('eleves', [StudentsController, 'index'])

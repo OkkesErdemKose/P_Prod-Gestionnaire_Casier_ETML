@@ -5,7 +5,7 @@ export default class Student extends BaseModel {
 
 
   @column({ isPrimary: true })
-  declare studentId: number
+  declare id: number
 
   @column()
   declare name: string

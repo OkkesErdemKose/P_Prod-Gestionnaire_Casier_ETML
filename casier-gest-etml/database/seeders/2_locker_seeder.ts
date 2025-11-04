@@ -9,8 +9,7 @@ export default class extends BaseSeeder {
       {
         lockerNumber: 4,
         roomName: 'A11',
-        site: 'Vennes',
-        studentId: 2
+        site: 'Vennes'
       },
       {
         lockerNumber: 2,

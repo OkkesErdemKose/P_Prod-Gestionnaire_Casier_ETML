@@ -6,7 +6,7 @@
     <title>Gestion des casiers de l'ETML</title>
   </head>
   <body>
-    <h1>Liste des casiers</h1>
+    <h1>Information sur le casier {{ locker.lockerNumber }}</h1>
     <table>
         <tr>
             <th>id</th>
@@ -15,7 +15,6 @@
             <th>Nom du site</th>
             <th>ID du propriétaire</th>
         </tr>
-        @each(locker in lockers)
         <tr>
             <td>{{ locker.id}}</td>
             <td>{{ locker.lockerNumber}}</td>
@@ -23,7 +22,6 @@
             <td>{{ locker.site}}</td>
             <td>{{ locker.studentId}}</td>
         </tr>
-        @end
     </table>
 
   </body>

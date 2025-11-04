@@ -1,9 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import Student from './student.js'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
 
 export default class Locker extends BaseModel {
   @column({ isPrimary: true })
-  declare lockerId: number
+  declare id: number
 
   @column()
   declare lockerNumber: number
@@ -16,6 +18,9 @@ export default class Locker extends BaseModel {
 
   @column()
   declare studentId: number
+
+  @hasOne(() => Student)
+  declare student: HasOne<typeof Student>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

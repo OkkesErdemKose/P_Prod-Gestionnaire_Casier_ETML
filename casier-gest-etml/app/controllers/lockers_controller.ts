@@ -34,12 +34,12 @@ export default class LockersController {
   async show({view, params }: HttpContext) {
 
     // SELECT locker_id FROM lockers
-    const locker = await db.from('lockers').where('locker_id', params.id)
-
+    const locker = await Locker.query().where('id', params.locker_id).firstOrFail()
 
     //dd(locker)
 
-    return `${locker}`
+    return view.render('pages/lockers/show', { locker })
+
 
   }
 
