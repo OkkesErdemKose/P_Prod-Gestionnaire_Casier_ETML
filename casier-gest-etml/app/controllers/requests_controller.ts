@@ -5,7 +5,7 @@ import db from '@adonisjs/lucid/services/db'
 
 export default class RequestsController {
   /**
-   * Afficher la liste des casiers
+   * Afficher la liste des demandes
    */
   async index({view }: HttpContext) {
 

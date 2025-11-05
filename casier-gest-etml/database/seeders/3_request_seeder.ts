@@ -1,3 +1,4 @@
+import Locker from '#models/locker'
 import Request from '#models/request'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
@@ -7,11 +8,9 @@ export default class extends BaseSeeder {
 
     const request = [
       {
-        studentId: 1,
-        lockerId: 1
+        lockerId: 4 
       },
       {
-        studentId: 2,
         lockerId: 2
       }
 
