@@ -1,19 +1,19 @@
 # P_Prod-Gestionnaire_Casier_ETML
 
-Commande pour ajouter la clé dans le .env :
+# Commande pour ajouter la clé dans le .env :
 
-node ace generate:key
-
-
-Lignes à ajouter dans le .env
-
-DB_PORT=6033
-DB_DATABASE=db_locker
+## node ace generate:key
 
 
-Ajouter les tables + données : 
+# Lignes à ajouter dans le .env
 
-node ace migration:run
-node ace db:seed
+## DB_PORT=6033
+## DB_DATABASE=db_locker
 
-node ace migration:fresh --seed
+
+# Ajouter les tables + données : 
+
+## node ace migration:run
+## node ace db:seed
+
+## node ace migration:fresh --seed
