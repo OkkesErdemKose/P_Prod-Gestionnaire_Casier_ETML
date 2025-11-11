@@ -22,7 +22,7 @@ node ace migration:fresh --seed
 
 Fichier .env : 
 
-TZ=UTC
+`TZ=UTC
 PORT=3333
 HOST=localhost
 LOG_LEVEL=info
@@ -37,3 +37,4 @@ DB_DATABASE=db_casier_gest
 =======
 ### node ace migration:fresh --seed
 >>>>>>> 794a2f9fb0bd314eddc97fb2b5bb51bac6fcb7a8
+`
