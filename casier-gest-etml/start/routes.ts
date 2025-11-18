@@ -15,3 +15,10 @@ router.get('casiers', [LockersController, 'index'])
 router.get("casiers/:locker_id", [LockersController, 'show'])
 
 router.get('eleves', [StudentsController, 'index'])
+<<<<<<< Updated upstream
+=======
+
+router.get('demandes', [RequestsController, 'index'])
+
+router.get('', [StudentsController, 'login'])
+>>>>>>> Stashed changes
