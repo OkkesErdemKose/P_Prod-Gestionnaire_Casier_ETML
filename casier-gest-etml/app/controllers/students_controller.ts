@@ -18,6 +18,7 @@ export default class StudentsController {
   }
 
   async login({view}: HttpContext){
+
     return view.render('pages/login')
   }
 
