@@ -7,7 +7,7 @@ export default class LockersController {
   /**
    * Afficher la liste des casiers
    */
-  async index({view }: HttpContext) {
+  async index({view  }: HttpContext) {
 
     // SELECT * FROM lockers
     const lockers = await Locker.all()
@@ -15,6 +15,16 @@ export default class LockersController {
     // dd(lockers)
 
     return view.render('pages/lockers', { lockers })
+
+  }
+
+  async freeLockers({view}: HttpContext) {
+
+    const freeLockers = await Locker.query().whereNull('student_id')
+
+    // dd(freeLockers)
+
+    return view.render('pages/freeLockers', { freeLockers })
 
   }
 

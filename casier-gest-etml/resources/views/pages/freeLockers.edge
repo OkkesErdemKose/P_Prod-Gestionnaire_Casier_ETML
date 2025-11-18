@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gestion des casiers de l'ETML
+    </title>
+  </head>
+  <body>
+    @if(flashMessages.has('success'))
+      <div class="alert alert-success">
+        {{ flashMessages.get('success') }}
+      </div>
+    @endif
+    
+    @if(flashMessages.has('error'))
+      <div class="alert alert-danger">
+        {{ flashMessages.get('error') }}
+      </div>
+    @endif
+    <h1>
+      Liste des casiers
+    </h1>
+    <table>
+      <tr>
+        <th>
+          id
+        </th>
+        <th>
+          Numéro du casier
+        </th>
+        <th>
+          Nom de la salle
+        </th>
+        <th>
+          Nom du site
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+      @each(locker in freeLockers)
+        <tr>
+          <td>
+            {{ locker.id }}
+          </td>
+          <td>
+            {{ locker.lockerNumber }}
+          </td>
+          <td>
+            {{ locker.roomName }}
+          </td>
+          <td>
+            {{ locker.site }}
+          </td>
+          <td>
+            <a href="{{ route('request.store', {locker_id : locker.id, student_id: 1 }) }}">Demander ce casier</a>
+          </td>
+        </tr>
+      @end
+    </table>
+
+  </body>
+</html>
