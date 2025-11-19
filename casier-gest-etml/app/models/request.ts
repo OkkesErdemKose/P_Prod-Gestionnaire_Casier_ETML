@@ -1,32 +1,29 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column, hasOne } from '@adonisjs/lucid/orm'
 import Student from './student.js'
+import Locker from './locker.js'
 import type { BelongsTo, HasOne } from '@adonisjs/lucid/types/relations'
 
-export default class Locker extends BaseModel {
+export default class Request extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare lockerNumber: number
-
-  @column()
-  declare roomName: string
-
-  @column()
-  declare site: string
-
-  @column()
   declare studentId: number
-
   
-  @belongsTo(() => Student)
-  declare student: BelongsTo<typeof Student>
+  @column()
+  declare lockerId: number
 
+  @hasOne(() => Student)
+  declare student: HasOne<typeof Student>
+
+  @belongsTo(() => Locker)
+  declare locker: BelongsTo<typeof Locker>
+  
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-  static return: any
+  
 }

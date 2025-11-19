@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des utilisateurs de l'ETML</title>
+  </head>
+  <body>
+    <h1>Liste des utilisateurs</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Classe</th>
+        </tr>
+        @each(request in requests)
+        <tr>
+            <td>{{ request.id}}</td>
+            <td>{{ request.studentId}}</td>
+            <td>{{ request.lockerId}}</td>
+        </tr>
+        @end
+    </table>
+
+  </body>
+</html>

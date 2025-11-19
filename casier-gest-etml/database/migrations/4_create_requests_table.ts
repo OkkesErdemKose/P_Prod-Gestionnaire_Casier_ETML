@@ -7,8 +7,17 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.integer('student_id').unique()
-      table.integer('locker_id')
+      table
+        .integer('locker_id')
+        .unsigned()
+        .references('id')
+        .inTable('lockers')
+
+      table
+        .integer('student_id')
+        .unsigned()
+        .references('id')
+        .inTable('students')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
