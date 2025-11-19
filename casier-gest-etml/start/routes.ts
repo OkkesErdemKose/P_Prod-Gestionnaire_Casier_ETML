@@ -16,5 +16,7 @@ router.get('casiers', [LockersController, 'index'])
 router.get("casiers/:locker_id", [LockersController, 'show'])
 
 router.get('eleves', [StudentsController, 'index'])
+//router.get('demandes', [RequestsController, 'index'])
 
+router.get('', [StudentsController, 'login'])
 router.get('demandes', [RequestsController, 'index'])
