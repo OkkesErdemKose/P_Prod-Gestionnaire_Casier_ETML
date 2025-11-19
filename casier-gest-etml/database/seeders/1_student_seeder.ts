@@ -30,8 +30,13 @@ export default class extends BaseSeeder {
           class: 'CIN1A'
         },
         {
-          name: 'Zidane',
-          lastName: 'Sahraoui',
+          name: 'Sahraoui',
+          lastName: 'Zidane',
+          class: 'CIN2B'
+        },
+        {
+          name: 'Sena',
+          lastName: 'Cruz',
           class: 'CIN2B'
         },
       ]

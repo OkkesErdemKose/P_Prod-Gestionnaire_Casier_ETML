@@ -14,26 +14,37 @@ export default class extends BaseSeeder {
       {
         lockerNumber: 2,
         roomName: 'A12',
-        site: 'Vennes',
-        studentId: 3
+        site: 'Vennes'
       },
       {
         lockerNumber: 6,
         roomName: 'A13',
-        site: 'Vennes',
-        studentId: 5
+        site: 'Vennes'
       },
       {
         lockerNumber: 8,
         roomName: 'A21',
-        site: 'Vennes',
-        studentId: 1
+        site: 'Vennes'
       },
       {
         lockerNumber: 1,
         roomName: 'A22',
-        site: 'Vennes',
-        studentId: 4
+        site: 'Vennes'
+      },
+      {
+        lockerNumber: 3,
+        roomName: 'A23',
+        site: 'Vennes'
+      },
+      {
+        lockerNumber: 5,
+        roomName: 'B12',
+        site: 'Vennes'
+      },
+      {
+        lockerNumber: 7,
+        roomName: 'B13',
+        site: 'Vennes'
       }
     ]
 

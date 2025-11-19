@@ -8,10 +8,8 @@ export default class extends BaseSeeder {
 
     const request = [
       {
-        lockerId: 4 
-      },
-      {
-        lockerId: 2
+        lockerId: 1,
+        studentId: 1
       }
 
     ]
