@@ -4,25 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des utilisateurs de l'ETML</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f4f6f9;
+        color: #2c3e50;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #34495e;
+      }
+
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 90%;
+        max-width: 1100px;
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      th {
+        background: #34495e;
+        color: #fff;
+        padding: 15px;
+        text-transform: uppercase;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      tr:hover td {
+        background: #f0f4f8;
+        transition: 0.3s;
+      }
+
+      tr:nth-child(even) td {
+        background: #f9fbfd;
+      }
+
+      /* Badge admin */
+      .badge-admin {
+        background: #27ae60;
+        padding: 5px 12px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+      }
+
+      .badge-user {
+        background: #7f8c8d;
+        padding: 5px 12px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+      }
+
+      .table-container {
+        overflow-x: auto;
+      }
+    </style>
   </head>
+
   <body>
-    <h1>Liste des utilisateurs</h1>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Classe</th>
-        </tr>
-        @each(student in students)
-        <tr>
-            <td>{{ student.id}}</td>
-            <td>{{ student.name}}</td>
-            <td>{{ student.lastName}}</td>
-            <td>{{ student.class}}</td>
-        </tr>
-        @end
-    </table>
+    <h1>Liste des utilisateurs ETML</h1>
+
+    <div class="table-container">
+      <table>
+          <tr>
+              <th>ID</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>EduVaud ID</th>
+              <th>Admin</th>
+              <th>Mot de passe (hash)</th>
+          </tr>
+
+          @each(student in students)
+          <tr>
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.eduvaudId }}</td>
+              <td>
+                @if(student.isAdmin)
+                  <span class="badge-admin">Admin</span>
+                @else
+                  <span class="badge-user">Utilisateur</span>
+                @end
+              </td>
+              <td style="font-family: monospace; font-size: 0.85rem;">
+                {{ student.password }}
+              </td>
+          </tr>
+          @end
+      </table>
+    </div>
 
   </body>
 </html>

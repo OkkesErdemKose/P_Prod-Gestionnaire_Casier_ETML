@@ -1,3 +1,10 @@
+/* Police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 /* Info affichée une seule fois */
 .locker-info {
     width: 80%;
@@ -56,8 +63,7 @@ tr:hover td {
     background: #f0f4f8;
 }
 
-
-/* Container des notifications (en haut à droite) */
+/* Container des notifications */
 .alert {
     position: fixed;
     top: 20px;
@@ -74,19 +80,16 @@ tr:hover td {
     opacity: 0.95;
 }
 
-/* Succès */
 .alert-success {
     background: #2ecc71;
     border-left: 5px solid #27ae60;
 }
 
-/* Erreur */
 .alert-danger {
     background: #e74c3c;
     border-left: 5px solid #c0392b;
 }
 
-/* Animation d'apparition */
 @keyframes slide-in {
     from {
         transform: translateX(120%);
@@ -98,7 +101,6 @@ tr:hover td {
     }
 }
 
-/* Disparition progressive (après 4s) */
 @keyframes fade-out {
     to {
         opacity: 0;

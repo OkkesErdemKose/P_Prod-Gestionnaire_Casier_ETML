@@ -12,6 +12,15 @@ export default class Student extends BaseModel {
   declare lastName: string
 
   @column()
+  declare eduvaudId: string
+
+  @column()
+  declare isAdmin: boolean
+
+  @column({ serializeAs: null })
+  declare password: string
+
+  @column()
   declare class: string
 
   @column.dateTime({ autoCreate: true })
