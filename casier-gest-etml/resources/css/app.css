@@ -1,22 +1,33 @@
-/* Style général */
-body {
-    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f5f7fa;
-    margin: 0;
-    padding: 40px;
-    color: #333;
-}
-
-/* Titre principal */
-h1 {
-    text-align: center;
+/* Info affichée une seule fois */
+.locker-info {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    padding: 15px 20px;
+    background: #eef3f8;
+    border-left: 4px solid #2c3e50;
+    border-radius: 6px;
+    font-size: 1.1rem;
     color: #2c3e50;
-    margin-bottom: 40px;
-    font-size: 2rem;
-    font-weight: 600;
 }
 
-/* Table container pour centrer */
+/* Bouton (lien stylisé) */
+a.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+a.btn:hover {
+    background: #1d6fa5;
+    transform: translateY(-2px);
+}
+
+/* tableau identique à ton style précédent */
 table {
     margin: 0 auto;
     border-collapse: collapse;
@@ -28,41 +39,69 @@ table {
     overflow: hidden;
 }
 
-/* En-têtes */
 th {
     background: #34495e;
     color: #fff;
     padding: 15px;
-    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
 }
 
-/* Lignes */
 td {
     padding: 15px;
     text-align: center;
-    font-size: 0.95rem;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #eee;
 }
 
-/* Dernière ligne sans bord */
-tr:last-child td {
-    border-bottom: none;
-}
-
-/* Effet hover sur la ligne */
 tr:hover td {
     background: #f0f4f8;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    table {
-        width: 100%;
+
+/* Container des notifications (en haut à droite) */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    animation: slide-in 0.4s ease, fade-out 0.7s ease 4s forwards;
+    z-index: 9999;
+    min-width: 250px;
+    max-width: 350px;
+    opacity: 0.95;
+}
+
+/* Succès */
+.alert-success {
+    background: #2ecc71;
+    border-left: 5px solid #27ae60;
+}
+
+/* Erreur */
+.alert-danger {
+    background: #e74c3c;
+    border-left: 5px solid #c0392b;
+}
+
+/* Animation d'apparition */
+@keyframes slide-in {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
     }
-    th, td {
-        padding: 10px;
-        font-size: 0.85rem;
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+/* Disparition progressive (après 4s) */
+@keyframes fade-out {
+    to {
+        opacity: 0;
+        transform: translateX(120%);
     }
 }
