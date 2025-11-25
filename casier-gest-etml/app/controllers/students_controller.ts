@@ -17,7 +17,13 @@ export default class StudentsController {
 
   }
 
+  async login({view}: HttpContext){
+
+    return view.render('pages/login')
+  }
+
   /**
+   *
    * Display form to create a new record
    */
   async create({ }: HttpContext) { }
