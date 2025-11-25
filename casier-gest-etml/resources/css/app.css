@@ -1,35 +1,68 @@
-* {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 0;
+/* Style général */
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #E5E5E5;
+/* Titre principal */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    font-weight: 600;
 }
-header{
-  background-color: #D9D9D9;
-  padding: 1rem;
-}
-h1{
-  margin-left: 16px;
-}
+
+/* Table container pour centrer */
 table {
-  border-collapse: collapse;
-  background-color: #D9D9D9;
-  
-  margin: 2rem;
-  font-size: larger;
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 900px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
-th, td{
-  padding: 10px;
-  text-align: center;
+
+/* En-têtes */
+th {
+    background: #34495e;
+    color: #fff;
+    padding: 15px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
-tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
+
+/* Lignes */
+td {
+    padding: 15px;
+    text-align: center;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e6e6e6;
 }
-tr{
-  background-color: #C8C8C8;
+
+/* Dernière ligne sans bord */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Effet hover sur la ligne */
+tr:hover td {
+    background: #f0f4f8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
 }
