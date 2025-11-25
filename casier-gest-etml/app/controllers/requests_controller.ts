@@ -25,26 +25,24 @@ export default class RequestsController {
    * Demande de prise d'un casier libre par un élève
    */
   async store({ response, params, session }: HttpContext) {
-    // Vérifier si l'élève a déjà une demande
     const isStudentExist = await Request.query().where('studentId', params.student_id).first()
 
-    // Vérifier si le casier est déjà demandé
     const isLockerExist = await Request.query().where('lockerId', params.locker_id).first()
 
     if (isStudentExist) {
       
-      // L'élève a déjà demandé un casier
+      
       session.flash('error', 'Vous avez déjà une demande de casier !')
 
     } else if (isLockerExist) {
-      // Le casier est déjà demandé
+      
       session.flash('error', 'Casier déjà demandé ! Veuillez demander un autre.')
 
     } else {
 
-      // Créer la demande car tout est libre
+      
       await Request.create({ lockerId: params.locker_id, studentId: params.student_id })
-      session.flash('success', 'Casier attribué avec succès !')
+      session.flash('success', 'Casier demandé avec succès !')
     }
 
     return response.redirect().toRoute('home', { session })

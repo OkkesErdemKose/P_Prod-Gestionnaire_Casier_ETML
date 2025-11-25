@@ -8,7 +8,7 @@ export default class Locker extends BaseModel {
   declare id: number
 
   @column()
-  declare lockerNumber: number
+  declare lockerNumber: string
 
   @column()
   declare roomName: string
