@@ -1,0 +1,16 @@
+<header style="display:flex; justify-content:flex-end; padding:15px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1)">
+  @if(auth.user)
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span>{{ auth.user.name }} {{ auth.user.lastName }}</span>
+
+
+
+      <form method="POST" action="/logout">
+        <button style="
+          margin-left:15px; padding:6px 12px; background:#dc3545; color:white;
+          border:none; border-radius:6px; cursor:pointer;
+        ">Déconnexion</button>
+      </form>
+    </div>
+  @endif
+</header>

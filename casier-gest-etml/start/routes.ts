@@ -2,26 +2,43 @@
 |--------------------------------------------------------------------------
 | Routes file
 |--------------------------------------------------------------------------
-|
-| The routes file is used for defining the HTTP routes.
-|
 */
+
+import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 
 import LockersController from '#controllers/lockers_controller'
 import RequestsController from '#controllers/requests_controller'
 import StudentsController from '#controllers/students_controller'
-import router from '@adonisjs/core/services/router'
+import AuthController from '#controllers/auth_controller' // <-- IMPORTANT
 
-// Page qui affiche tous les casiers vides et permet à un élève d'en demander un
-router.get('casiers-libres', [LockersController, 'freeLockers']).as('home')
+// Page Login
+router.get('/login', async ({ view }) => {
+  return view.render('auth/login')
+})
 
-router.get('casiers', [LockersController, 'index'])
-router.get("casiers/:locker_id", [LockersController, 'show']).as('lockers.show')
+router.post('/login', [AuthController, 'login'])
+router.post('/logout', [AuthController, 'logout']).use(middleware.auth())
 
-router.get('eleves', [StudentsController, 'index'])
-//router.get('demandes', [RequestsController, 'index'])
+// Page d’atterrissage -> redirection
+router.get('/', async ({ response }) => response.redirect('/casiers-libres'))
 
-router.get('', [StudentsController, 'login'])
-router.get('demandes', [RequestsController, 'index'])
-router.get('casiers/:locker_id/student/:student_id', [RequestsController, 'store']).as('request.store')
+// Accès casiers libres
+router.get('/casiers-libres', [LockersController, 'freeLockers'])
+  .as('home')
+  .use(middleware.auth())
 
+// Casiers
+//router.get('/casiers', [LockersController, 'index'])
+//router.get('/casiers/:locker_id', [LockersController, 'show']).as('lockers.show')
+
+// Élèves A LAISSER QUE POIUR LES ADMINS
+router.get('/eleves', [StudentsController, 'index'])
+
+// Demandes
+router.get('/demandes', [RequestsController, 'index'])
+
+// 🔹 Route de demande de casier par le student connecté
+router.get('/casiers/:locker_id/request', [RequestsController, 'store'])
+  .as('request.store')
+  .use(middleware.auth())

@@ -5,21 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestion des casiers de l'ETML</title>
     <link rel="stylesheet" href="./resources/css/app.css" />
+    <style>
+      .btn.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body>
 
-@if(flashMessages.has('success'))
-  <div class="alert alert-success">
-    {{ flashMessages.get('success') }}
-  </div>
-@endif
+    @include('components/header')
 
-@if(flashMessages.has('error'))
-  <div class="alert alert-danger">
-    {{ flashMessages.get('error') }}
-  </div>
-@endif
+    <h2>Bienvenue {{ auth.user.name }} {{ auth.user.lastName }}</h2>
+    <p>EduVaud : {{ auth.user.eduvaudId }}</p>
 
+    @if(flashMessages.has('success'))
+      <div class="alert alert-success">
+        {{ flashMessages.get('success') }}
+      </div>
+    @endif
+
+    @if(flashMessages.has('error'))
+      <div class="alert alert-danger">
+        {{ flashMessages.get('error') }}
+      </div>
+    @endif
 
     <h1>Liste des casiers</h1>
 
@@ -39,10 +50,14 @@
         <tr>
           <td>{{ locker.lockerNumber }}</td>
           <td>
-            <a class="btn" 
-               href="{{ route('request.store', {locker_id : locker.id, student_id: 1 }) }}">
-               Demander ce casier
-            </a>
+            @if(locker.isRequested)
+              <span class="btn disabled">Déjà demandé</span>
+            @else
+              <a class="btn" 
+                 href="{{ route('request.store', { locker_id: locker.id }) }}">
+                 Demander ce casier
+              </a>
+            @endif
           </td>
         </tr>
       @end

@@ -23,6 +23,8 @@ export default class Locker extends BaseModel {
   @belongsTo(() => Student)
   declare student: BelongsTo<typeof Student>
 
+  public isRequested?: boolean
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

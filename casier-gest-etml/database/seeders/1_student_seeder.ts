@@ -28,7 +28,7 @@ export default class StudentSeeder extends BaseSeeder {
     })
 
     // Utilisation de for...of avec await
-    for (let i = 1; i <= 300; i++) {
+    for (let i = 0; i <= 300; i++) {
       const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
       const lastName = lastNames[Math.floor(Math.random() * lastNames.length)]
       const eduvaudId = `u${i.toString().padStart(3,'0')}etml`
