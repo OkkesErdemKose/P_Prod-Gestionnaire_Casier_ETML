@@ -12,7 +12,6 @@ export default class extends BaseSchema {
       table.string('eduvaud_id').notNullable().unique()
       table.boolean('is_admin').defaultTo(false)
       table.string('password').notNullable()
-      table.string('class')
 
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

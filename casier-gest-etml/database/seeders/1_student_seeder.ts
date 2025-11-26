@@ -5,21 +5,30 @@ import hash from '@adonisjs/core/services/hash'
 export default class StudentSeeder extends BaseSeeder {
   public async run() {
     const firstNames = [
-      'Erdem','Lukas','Noah','Mia','Emma','Léa','Sophie','Gabriel','Raphael','Chloé',
+      'Lukas','Noah','Mia','Emma','Léa','Sophie','Gabriel','Raphael','Chloé',
       'Anna','Julien','Maxime','Sarah','Louis','Clara','Tom','Nina','Elisa','Samuel',
       'Alex','Mathis','Laura','Eva','Tim','Julie','Ben','Alice','David','Lina'
     ]
 
     const lastNames = [
-      'Kose','Müller','Schmid','Dubois','Rossi','Meier','Martin','Moreau','Frey','Lemoine',
+      'Müller','Schmid','Dubois','Rossi','Meier','Martin','Moreau','Frey','Lemoine',
       'Zimmermann','Roth','Bucher','Girard','Beck','Heinrich','Schneider','Perrin','Haas','Weber',
       'Bianchi','Gruber','Lange','Faure','Keller','Dupont','Schwarz','Marchand','Fischer','Petit'
     ]
 
     const students = []
 
+    const hashedPassword = await hash.make('zebi1010')
+    students.push({
+      name: "Kose",
+      lastName: "Erdem",
+      eduvaudId: "pl23ksc",
+      isAdmin: true,
+      password: hashedPassword,
+    })
+
     // Utilisation de for...of avec await
-    for (let i = 1; i <= 200; i++) {
+    for (let i = 1; i <= 300; i++) {
       const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
       const lastName = lastNames[Math.floor(Math.random() * lastNames.length)]
       const eduvaudId = `u${i.toString().padStart(3,'0')}etml`
@@ -35,6 +44,7 @@ export default class StudentSeeder extends BaseSeeder {
         password: hashedPassword,
       })
     }
+
 
     await Student.createMany(students)
   }

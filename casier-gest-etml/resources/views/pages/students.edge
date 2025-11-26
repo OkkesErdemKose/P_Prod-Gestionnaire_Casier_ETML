@@ -89,8 +89,7 @@
               <th>Prénom</th>
               <th>Nom</th>
               <th>EduVaud ID</th>
-              <th>Admin</th>
-              <th>Mot de passe (hash)</th>
+              <th>Grade</th>
           </tr>
 
           @each(student in students)
@@ -105,9 +104,6 @@
                 @else
                   <span class="badge-user">Utilisateur</span>
                 @end
-              </td>
-              <td style="font-family: monospace; font-size: 0.85rem;">
-                {{ student.password }}
               </td>
           </tr>
           @end
