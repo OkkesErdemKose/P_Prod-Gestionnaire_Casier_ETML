@@ -1,109 +1,241 @@
-/* Police moderne */
+/* ------------------------------
+   FONTS & ROOT VARIABLES
+------------------------------ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+    --bg: #0f0f11;
+    --bg-light: #16161a;
+    --bg-lighter: #1b1b21;
+
+    --text: #e4e4e7;
+    --text-soft: #b5b5c3;
+
+    --primary: #4f46e5;
+    --primary-hover: #6c63ff;
+
+    --success: #2ecc71;
+    --danger: #e74c3c;
+
+    --radius: 10px;
+
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    --transition: 0.25s ease;
+}
+
+/* ------------------------------
+   GLOBAL
+------------------------------ */
 body {
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 25px;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Info affichée une seule fois */
-.locker-info {
-    width: 80%;
-    margin: 0 auto 20px auto;
-    padding: 15px 20px;
-    background: #eef3f8;
-    border-left: 4px solid #2c3e50;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    color: #2c3e50;
+/* Slight intro animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Bouton (lien stylisé) */
-a.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
+h1, h2, h3 {
     font-weight: 600;
-    transition: 0.25s;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-a.btn:hover {
-    background: #1d6fa5;
-    transform: translateY(-2px);
+p {
+    color: var(--text-soft);
 }
 
-/* tableau identique à ton style précédent */
+/* ------------------------------
+   TABLE DESIGN
+------------------------------ */
+
 table {
-    margin: 0 auto;
+    width: 95%;
+    max-width: 1100px;
+    margin: 30px auto;
     border-collapse: collapse;
-    width: 80%;
-    max-width: 900px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s ease;
 }
 
 th {
-    background: #34495e;
-    color: #fff;
+    background: var(--bg-lighter);
+    color: white;
     padding: 15px;
     text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
 td {
-    padding: 15px;
+    padding: 14px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #2c2c34;
+    color: var(--text-soft);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Hover smooth effect */
+tr {
+    transition: 0.25s ease;
 }
 
 tr:hover td {
-    background: #f0f4f8;
+    background: #1f1f27;
+    color: white;
 }
 
-/* Container des notifications */
-.alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 8px;
+/* Alternated rows */
+tr:nth-child(even) td {
+    background: #18181f;
+}
+
+/* ------------------------------
+   BUTTONS
+------------------------------ */
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    background: var(--primary);
     color: white;
-    font-size: 1rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    animation: slide-in 0.4s ease, fade-out 0.7s ease 4s forwards;
-    z-index: 9999;
-    min-width: 250px;
-    max-width: 350px;
-    opacity: 0.95;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn.disabled {
+    background: #444;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* ------------------------------
+   ALERTS
+------------------------------ */
+
+.alert {
+    width: 90%;
+    max-width: 900px;
+    margin: 15px auto;
+    padding: 15px 20px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    animation: fadeIn 0.4s ease;
+    box-shadow: var(--shadow-soft);
 }
 
 .alert-success {
-    background: #2ecc71;
-    border-left: 5px solid #27ae60;
+    background: rgba(46, 204, 113, 0.15);
+    border-left: 4px solid var(--success);
+    color: var(--success);
 }
 
 .alert-danger {
-    background: #e74c3c;
-    border-left: 5px solid #c0392b;
+    background: rgba(231, 76, 60, 0.15);
+    border-left: 4px solid var(--danger);
+    color: var(--danger);
 }
 
-@keyframes slide-in {
-    from {
-        transform: translateX(120%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0%);
-        opacity: 1;
-    }
+/* ------------------------------
+   BADGES
+------------------------------ */
+
+.badge-admin,
+.badge-user {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
 }
 
-@keyframes fade-out {
-    to {
-        opacity: 0;
-        transform: translateX(120%);
+.badge-admin {
+    background: var(--success);
+}
+
+.badge-user {
+    background: #7f8c8d;
+}
+
+/* ------------------------------
+   HEADER (optional)
+------------------------------ */
+
+header,
+.components-header {
+    background: var(--bg-light);
+    padding: 20px;
+    text-align: center;
+    border-radius: var(--radius);
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* ------------------------------
+   CUSTOM INFO BLOCKS
+------------------------------ */
+
+.locker-info, .info-block {
+    margin: 20px auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 800px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    animation: fadeIn 0.5s ease;
+}
+
+.locker-info p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: var(--text-soft);
+}
+
+.locker-info strong {
+    color: white;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+
+@media (max-width: 700px) {
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
     }
 }
