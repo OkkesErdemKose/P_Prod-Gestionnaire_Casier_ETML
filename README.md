@@ -93,6 +93,12 @@ Votre projet est maintenant entièrement configuré. Lancez le serveur de dével
 node ace serve --watch
 ```
 
+Ou bien utilisez cette commande pour le tester à chaud :
+
+```bash
+npm run dev
+```
+
 L'application est maintenant accessible à l'adresse [http://localhost:3333](https://www.google.com/search?q=http://localhost:3333).
 
 -----
