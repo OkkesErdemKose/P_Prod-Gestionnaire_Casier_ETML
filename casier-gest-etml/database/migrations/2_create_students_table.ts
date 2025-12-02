@@ -7,12 +7,14 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.string('name')
-      table.string('last_name')
-      table.string('class')
+      table.string('name').notNullable()
+      table.string('last_name').notNullable()
+      table.string('eduvaud_id').notNullable().unique()
+      table.boolean('is_admin').defaultTo(false)
+      table.string('password').notNullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at', { useTz: true })
+      table.timestamp('updated_at', { useTz: true })
     })
   }
 

@@ -1,50 +1,51 @@
 import Request from '#models/request'
 import type { HttpContext } from '@adonisjs/core/http'
-import { dd } from '@adonisjs/core/services/dumper'
-import db from '@adonisjs/lucid/services/db'
 
 export default class RequestsController {
   /**
    * Afficher la liste des demandes
    */
-  async index({view }: HttpContext) {
-
-    // SELECT * FROM requests
+  async index({ view }: HttpContext) {
     const requests = await Request.all()
-
-    // dd(lockers)
-
     return view.render('pages/requests', { requests })
-
   }
 
   /**
-   * Display form to create a new record
+   * Demande de prise d'un casier libre par un élève
    */
-  async create({}: HttpContext) {}
+  async store({ response, params, session, auth }: HttpContext) {
+    const student = auth.use('web').user   // l'élève connecté
+    const lockerId = params.locker_id
 
-  /**
-   * Handle form submission for the create action
-   */
-  async store({ request }: HttpContext) {}
+    if (!student) {
+      session.flash('error', 'Vous devez être connecté.')
+      return response.redirect('/login')
+    }
 
-  /**
-   * Afficher un seul casier
-   */
-  async show({params }: HttpContext) {}
+    // Vérifie si le student a déjà une demande
+    const isStudentExist = await Request.query()
+      .where('studentId', student.id)
+      .first()
 
-  /**
-   * Edit individual record
-   */
+    // Vérifie si le casier est déjà demandé
+    const isLockerExist = await Request.query()
+      .where('lockerId', lockerId)
+      .first()
+
+    if (isStudentExist) {
+      session.flash('error', 'Vous avez déjà une demande de casier !')
+    } else if (isLockerExist) {
+      session.flash('error', 'Casier déjà demandé ! Veuillez demander un autre.')
+    } else {
+      await Request.create({ lockerId, studentId: student.id })
+      session.flash('success', 'Casier demandé avec succès !')
+    }
+
+    return response.redirect('/casiers-libres')
+  }
+
+  async show({ params }: HttpContext) {}
   async edit({ params }: HttpContext) {}
-
-  /**
-   * Handle form submission for the edit action
-   */
-  async update({  }: HttpContext) {}
-
-  /**
-   * Delete record
-   */
+  async update({}: HttpContext) {}
   async destroy({ params }: HttpContext) {}
 }

@@ -1,0 +1,13 @@
+<header >
+  @if(auth.user)
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span>{{ auth.user.name }} {{ auth.user.lastName }}</span>
+
+
+
+      <form method="POST" action="/logout">
+        <button>Déconnexion</button>
+      </form>
+    </div>
+  @endif
+</header>

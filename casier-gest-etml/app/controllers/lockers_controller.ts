@@ -2,12 +2,13 @@ import Locker from '#models/locker'
 import type { HttpContext } from '@adonisjs/core/http'
 import { dd } from '@adonisjs/core/services/dumper'
 import db from '@adonisjs/lucid/services/db'
+import Request from '#models/request'
 
 export default class LockersController {
   /**
    * Afficher la liste des casiers
    */
-  async index({view }: HttpContext) {
+  async index({view  }: HttpContext) {
 
     // SELECT * FROM lockers
     const lockers = await Locker.all()
@@ -18,6 +19,23 @@ export default class LockersController {
 
   }
 
+  async freeLockers({ view, auth }: HttpContext) {
+    const student = auth.use('web').user
+
+    // Récupère tous les casiers triés par lockerNumber (croissant)
+    const lockers = await Locker.query().orderBy('lockerNumber', 'asc')
+
+    // Ajoute isRequested pour chaque casier
+    for (const locker of lockers) {
+      const request = await Request.query().where('lockerId', locker.id).first()
+      locker.isRequested = !!request
+    }
+
+    return view.render('pages/freeLockers', {
+      freeLockers: lockers,
+      student, // si besoin dans la vue
+    })
+  }
   /**
    * Display form to create a new record
    */

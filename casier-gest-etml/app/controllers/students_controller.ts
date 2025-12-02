@@ -8,8 +8,9 @@ export default class StudentsController {
    */
   async index({view}: HttpContext) {
 
-    // SELECT * FROM students
-    const students = await Student.all()
+  // SELECT * FROM students ORDER BY id ASC
+  const students = await Student.query().orderBy('id', 'asc')
+
 
     // dd(students)
 

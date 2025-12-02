@@ -8,7 +8,7 @@ export default class Locker extends BaseModel {
   declare id: number
 
   @column()
-  declare lockerNumber: number
+  declare lockerNumber: string
 
   @column()
   declare roomName: string
@@ -22,6 +22,8 @@ export default class Locker extends BaseModel {
   
   @belongsTo(() => Student)
   declare student: BelongsTo<typeof Student>
+
+  public isRequested?: boolean
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

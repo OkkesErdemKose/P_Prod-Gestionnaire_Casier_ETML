@@ -12,7 +12,13 @@ export default class Student extends BaseModel {
   declare lastName: string
 
   @column()
-  declare class: string
+  declare eduvaudId: string
+
+  @column()
+  declare isAdmin: boolean
+
+  @column()
+  declare password: string // hashé en DB
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

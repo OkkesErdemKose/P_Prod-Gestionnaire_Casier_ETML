@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des utilisateurs de l'ETML</title>
+    <link rel="stylesheet" href="./resources/css/app.css" />
   </head>
+
   <body>
-    <h1>Liste des utilisateurs</h1>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Classe</th>
-        </tr>
-        @each(student in students)
-        <tr>
-            <td>{{ student.id}}</td>
-            <td>{{ student.name}}</td>
-            <td>{{ student.lastName}}</td>
-            <td>{{ student.class}}</td>
-        </tr>
-        @end
-    </table>
+    <h1>Liste des utilisateurs ETML</h1>
+
+    <div class="table-container">
+      <table>
+          <tr>
+              <th>ID</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>EduVaud ID</th>
+              <th>Grade</th>
+          </tr>
+
+          @each(student in students)
+          <tr>
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.eduvaudId }}</td>
+              <td>
+                @if(student.isAdmin)
+                  <span class="badge-admin">Admin</span>
+                @else
+                  <span class="badge-user">Utilisateur</span>
+                @end
+              </td>
+          </tr>
+          @end
+      </table>
+    </div>
 
   </body>
 </html>

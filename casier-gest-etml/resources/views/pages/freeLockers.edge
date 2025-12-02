@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des casiers de l'ETML</title>
+    <link rel="stylesheet" href="./resources/css/app.css" />
+
+  </head>
+  <body>
+
+    @include('components/header')
+
+    <h2>Bienvenue {{ auth.user.name }} {{ auth.user.lastName }}</h2>
+    <p>EduVaud : {{ auth.user.eduvaudId }}</p>
+
+    @if(flashMessages.has('success'))
+      <div class="alert alert-success">
+        {{ flashMessages.get('success') }}
+      </div>
+    @endif
+
+    @if(flashMessages.has('error'))
+      <div class="alert alert-danger">
+        {{ flashMessages.get('error') }}
+      </div>
+    @endif
+
+    <h1>Liste des casiers</h1>
+
+    <!-- Affichage unique du nom de la salle et du site -->
+    <div class="locker-info">
+      <p><strong>Salle :</strong> {{ freeLockers[0].roomName }}</p>
+      <p><strong>Site :</strong> {{ freeLockers[0].site }}</p>
+    </div>
+
+    <table>
+      <tr>
+        <th>Numéro du casier</th>
+        <th>Actions</th>
+      </tr>
+
+      @each(locker in freeLockers)
+        <tr>
+          <td>{{ locker.lockerNumber }}</td>
+          <td>
+            @if(locker.isRequested)
+              <span class="btn disabled">Déjà demandé</span>
+            @else
+              <a class="btn" 
+                 href="{{ route('request.store', { locker_id: locker.id }) }}">
+                 Demander ce casier
+              </a>
+            @endif
+          </td>
+        </tr>
+      @end
+    </table>
+
+  </body>
+</html>
