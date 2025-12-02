@@ -18,7 +18,7 @@ export default class Student extends BaseModel {
   declare isAdmin: boolean
 
   @column()
-  declare password: string // hashé en DB
+  declare password: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
