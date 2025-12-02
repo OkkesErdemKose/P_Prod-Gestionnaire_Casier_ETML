@@ -73,13 +73,19 @@ node ace generate:key
 
 Ces commandes vont créer la structure des tables et les remplir avec des données initiales.
 
-1.  **Exécuter les migrations** (crée les tables) :
+1. **Créer la base de données** :
+   Rendez-vous sur votre interface phpmyadmin, et crééz la base :
+   ```bash
+   db_casier_gest
+   ```
+
+3.  **Exécuter les migrations** (crée les tables) :
 
     ```bash
     node ace migration:run
     ```
 
-2.  **Exécuter les seeds** (ajoute les données de test/départ) :
+4.  **Exécuter les seeds** (ajoute les données de test/départ) :
 
     ```bash
     node ace db:seed
