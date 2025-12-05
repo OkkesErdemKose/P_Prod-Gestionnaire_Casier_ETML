@@ -19,15 +19,15 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('students')
 
-      table
-        .string('student_name')
-        .unsigned()
-        .references('students.name')
-        
-      table
-        .string('student_last_name')
-        .unsigned()
-        .references('students.last_name')
+      //table
+      //  .string('student_name')
+      //  .unsigned()
+      //  .references('students.name')
+      //  
+      //table
+      //  .string('student_last_name')
+      //  .unsigned()
+      //  .references('students.last_name')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
