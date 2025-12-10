@@ -74,7 +74,7 @@ node ace generate:key
 Ces commandes vont créer la structure des tables et les remplir avec des données initiales.
 
 1. **Créer la base de données** :
-   Rendez-vous sur votre interface phpmyadmin, et crééz la base :
+   Rendez-vous sur votre interface phpMyAdmin, et créez la base :
    ```bash
    db_casier_gest
    ```
